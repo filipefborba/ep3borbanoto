@@ -2,8 +2,6 @@ import tkinter as tk
 
 
 class Tabuleiro:
-        
-    class Tabuleiro:
     
     def __init__(self):
         self.window = tk.Tk()
