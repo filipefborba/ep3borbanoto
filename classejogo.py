@@ -1,4 +1,4 @@
-class Jogo:
+class Jogo(Tabuleiro):
   def __init__:
 
 
