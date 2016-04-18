@@ -1,6 +1,6 @@
 class Jogo(Tabuleiro):
   def __init__:
-
+      self.clique = 0
 
   def iniciar(self):
     self.window.mainloop()
@@ -11,11 +11,15 @@ class Jogo(Tabuleiro):
     
   def sorteia_iniciante():
     a = random.randint(0,1)
+    if a == 0:
+        self.clique = 0
+    else:
+        self.clique = 1
     return a
     
   def verifica_ganhador():
     vitoria = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-    if not listaX in vitoria and not listaO in vitoria:
+    if not listaX in vitoria and not listaO in vitoria or len(listaX) = 5 or len(listaO):
         print("Deu Velha!")
         return 0
     elif listaX in vitoria:
@@ -41,8 +45,12 @@ def recebe_jogada(linha, coluna):
         if verifica == -1:
             if clique == 0:
                 """mudar botao para X"""
+                listaX.append()
+                sorted(listaX, key=int)
             elif clique == 1:
                 """mudar botao para O"""
+                listaO.append()
+                sorted(listaO, key=int)
         if verifica >= 0:
             break
         
