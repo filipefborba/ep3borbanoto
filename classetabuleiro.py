@@ -73,7 +73,6 @@ class Tabuleiro():
         self.clicou(0,0)
         self.botão0x0.configure(text=self.jogo.player)
         self.botão0x0.configure(state= "disabled")
-        .configure(font='Arial 100' )
         self.botão0x0.configure(font='Arial 100' )
         self.jogo.recebe_jogada(0,0)
         
