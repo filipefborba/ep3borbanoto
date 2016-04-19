@@ -65,16 +65,18 @@ class Tabuleiro():
         
         
     def clicou(self, i, j):
+        print("Turno de: {0} " .format(self.jogo.player))
         print("Botão {0} x {1} clicado" .format(i,j))
         self.label_turno.configure(text="Turno de: {0}" .format(self.jogo.player))
-            
+         
             
     def botão0x0_clicado(self):
         self.clicou(0,0)
         self.botão0x0.configure(text=self.jogo.player)
         self.botão0x0.configure(state= "disabled")
-        self.botão0x0.configure(font='Arial 100' )
+        self.botão0x0.configure(font='Arial 100 ' )
         self.jogo.recebe_jogada(0,0)
+        
         
     def botão0x1_clicado(self):
         self.clicou(0,1)
@@ -87,7 +89,7 @@ class Tabuleiro():
         self.clicou(0,2)
         self.botão0x2.configure(text=self.jogo.player)
         self.botão0x2.configure(state= "disabled")
-        self.botão0x2.configure(font='Arial 100' )
+        self.botão0x2.configure(font='Arial 100 ' )
         self.jogo.recebe_jogada(0,2)
 
 ################          
@@ -136,6 +138,5 @@ class Tabuleiro():
         self.botão2x2.configure(font='Arial 100' )
         self.jogo.recebe_jogada(2,2)
         
-
 jogodavelha = Tabuleiro()
 jogodavelha.window.mainloop()

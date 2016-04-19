@@ -6,6 +6,7 @@ class Jogo():
       self.players = ["X","O"]
       self.player = self.players
       self.sorteia_iniciante()
+      self.matriz = np.zeros([3,3])
       
   def iniciar(self):
     self.window.mainloop()
@@ -20,18 +21,20 @@ class Jogo():
     
   def recebe_jogada(self, linha, coluna):
     verifica = self.verifica_ganhador()
-    matriz = np.zeros([3,3])
     
     #Registrar jogada
     if verifica == -1:
-        if matriz[linha][coluna] == 0:
+        if self.matriz[linha][coluna] == 0:
             if self.player == self.players[0]:
-                matriz[linha][coluna] = 1
+                self.matriz[linha][coluna] = 1
+                print(self.matriz)
                 self.player = self.players[1]
             elif self.player == self.players[1]:
-                matriz[linha][coluna] = 9
+                self.matriz[linha][coluna] = 9
+                print(self.matriz)
                 self.player = self.players[0]
     elif verifica >= 0:
+        
         pass
   def verifica_ganhador(self):
     #Verificação das possíveis vitórias
@@ -42,8 +45,22 @@ class Jogo():
 #        return 0
 #        print("O jogador 1 (X) venceu!")
 #        return 1
-#        print("O jogador 2 (O) venceu!")
-#        return 2
+        #print("O jogador 2 (O) venceu!")
+
+    if self.matriz[0][0] + self.matriz[0][1] + self.matriz[0][2] == 27 or self.matriz[1][0] + self.matriz[1][1] + self.matriz[1][2] == 27 \
+    or self.matriz[2][0] + self.matriz[2][1] + self.matriz[2][2] == 27 or self.matriz[0][0] + self.matriz[1][0] + self.matriz[2][0] == 27 \
+    or self.matriz[0][1] + self.matriz[1][1] + self.matriz[2][1] == 27 or self.matriz[0][2] + self.matriz[1][2] + self.matriz[2][2] == 27 \
+    or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 27 or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 27:
+        print("O jogador 2 (O) venceu!")
+        return 2
+    elif  self.matriz[0][0] + self.matriz[0][1] + self.matriz[0][2] == 3 or self.matriz[1][0] + self.matriz[1][1] + self.matriz[1][2] == 3 \
+    or self.matriz[2][0] + self.matriz[2][1] + self.matriz[2][2] == 3 or self.matriz[0][0] + self.matriz[1][0] + self.matriz[2][0] == 3 \
+    or self.matriz[0][1] + self.matriz[1][1] + self.matriz[2][1] == 3 or self.matriz[0][2] + self.matriz[1][2] + self.matriz[2][2] == 3 \
+    or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 3 or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 3:    
+        print("O jogador 1 (X) venceu!")
+        return 1
+    
+    else:         #return 2
         return -1
         
   def limpa_jogadas(self):
@@ -52,7 +69,7 @@ class Jogo():
     verifica = self.verifica_ganhador()
     
     #Reiniciar registro de jogadas
-    matriz = np.zeros([3,3])
+    self.matriz = np.zeros([3,3])
     
     #Reiniciar botões
     
