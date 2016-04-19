@@ -1,12 +1,12 @@
 import tkinter as tk
-#import classejogo
+import classejogo
 
 
 class Tabuleiro():
 
     
     def __init__(self):
-        #self.jogo = classejogo.Jogo()
+        self.jogo = classejogo.Jogo()
         self.window = tk.Tk()
         self.window.title("Jogo da Velha")
         self.window.geometry("300x350")
@@ -60,7 +60,7 @@ class Tabuleiro():
     #Criando a Label dos turnos:      
       
         self.label_turno = tk.Label(self.window)
-        self.label_turno.configure(text="Turno de: ")
+        self.label_turno.configure(text="Turno de: %s" %self.jogo.player)
         self.label_turno.grid(row=3, columnspan=3, sticky="nsew")
         
         
@@ -71,45 +71,47 @@ class Tabuleiro():
             
     def botão0x0_clicado(self):
         self.clicou(0,0)
-        self.botão0x0.configure(text=" X ")
+        self.botão0x0.configure(text=self.jogo.player)
         self.botão0x0.configure(state= "disabled")
         
     def botão0x1_clicado(self):
         self.clicou(0,1)
-        self.botão0x1.configure(text=" X ")
+        self.botão0x1.configure(text=self.jogo.player)
         self.botão0x1.configure(state= "disabled")
     def botão0x2_clicado(self):
         self.clicou(0,2)
-        self.botão0x2.configure(text=" X ")
+        self.botão0x2.configure(text=self.jogo.player)
         self.botão0x2.configure(state= "disabled")  
 
 ################          
           
     def botão1x0_clicado(self):
         self.clicou(1,0)
-        self.botão1x0.configure(text=" X ")
+        self.botão1x0.configure(text=self.jogo.player)
         self.botão1x0.configure(state= "disabled")
     def botão1x1_clicado(self):
         self.clicou(1,1)
-        self.botão1x1.configure(text=" X ")
+        self.botão1x1.configure(text=self.jogo.player)
         self.botão1x1.configure(state= "disabled")
     def botão1x2_clicado(self):
         self.clicou(1,2)
-        self.botão1x2.configure(text=" X ")
+        self.botão1x2.configure(text=self.jogo.player)
         self.botão1x2.configure(state= "disabled")
             
 ################            
             
     def botão2x0_clicado(self):
         self.clicou(2,0)
-        self.botão2x0.configure(text=" X ")
+        self.botão2x0.configure(text=self.jogo.player)
         self.botão2x0.configure(state= "disabled")
     def botão2x1_clicado(self):
         self.clicou(2,1)
-        self.botão2x1.configure(text=" X ")
+        self.botão2x1.configure(text=self.jogo.player)
         self.botão2x1.configure(state= "disabled")
     def botão2x2_clicado(self):
         self.clicou(2,2)
-        self.botão2x2.configure(text=" X ")
+        self.botão2x2.configure(text=self.jogo.player)
         self.botão2x2.configure(state= "disabled")
 
+jogodavelha = Tabuleiro()
+jogodavelha.window.mainloop()

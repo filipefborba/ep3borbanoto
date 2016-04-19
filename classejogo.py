@@ -4,6 +4,7 @@ import random
 class Jogo():
   def __init__(self):
       self.players = ["X","O"]
+      self.player = self.players
       self.sorteia_iniciante()
       
   def iniciar(self):
@@ -19,11 +20,11 @@ class Jogo():
     
   def recebe_jogada(self,linha, coluna):
     verifica = self.verifica_ganhador()
-    matriz = np.array([None,None,None][None,None,None][None,None,None])
+    matriz = np.zeros([3,3])
     
     #Registrar jogada
     while True:
-        if verifica == -1:
+        #if verifica == -1:
             if matriz[linha][coluna] == 0:
                 if self.player == 0:
                     self.clicou(linha,coluna)
@@ -33,7 +34,7 @@ class Jogo():
                     self.clicou(linha,coluna)
                     matriz[linha][coluna] = 9
                     self.player = self.players[0]
-        elif verifica >= 0:
+       #elif verifica >= 0:
             break
         
 #"""Método para receber e registrar uma jogada.
@@ -51,7 +52,7 @@ class Jogo():
 #        print("O jogador 2 (O) venceu!")
 #        return 2
 #        return -1"""
-        
+#        
   def limpa_jogadas(self):
     #Reiniciar os botões, cliques, etc.
     #Podemos fazer um botão pra isso
