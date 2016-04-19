@@ -1,6 +1,7 @@
+import numpy as np
+
 class Jogo(Tabuleiro):
   def __init__(self):
-    self.clique = 0
 
   def iniciar(self):
     self.window.mainloop()
@@ -14,16 +15,16 @@ class Jogo(Tabuleiro):
     a = random.randint(0,1)
     #Se o clique for 0 o jogador X inicia, caso for 1, o jogador O inicia.
     if a == 0:
-        self.clique = 0
+        self.player = self.player[0]
     else:
-        self.clique = 1
+        self.player = self.player[1]
     
   def verifica_ganhador():
-    #Lista de possíveis combinações de casas vencedoras
-    vitoria = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+    #Verificação das possíveis vitórias
+    for i in range(3):
     
     #Verificar quem ganha, -1 indica que o jogo está em andamento
-    if listaX not in vitoria and listaO not in vitoria or len(listaX) == 5 or len(listaO) == 5:
+    if 
         print("Deu Velha!")
         return 0
     elif listaX in vitoria:
@@ -41,24 +42,21 @@ vencedor ou -1 caso contrário. ListaX,ListaO = posições do X/O no tabuleiro."
 
 def recebe_jogada(linha, coluna):
     verifica_ganhador() = verifica
-    listaX = []
-    listaO = []
+    matrizX = np.zeros([3,3])
+    matrizO = np.zeros([3,3])
     
     #Registrar jogada
-    #...
-    
-    
     while True:
         if verifica == -1:
-            if "botao selecionado" not in listaX and "botao" not in listaO:
-                if self.clique == 0:
-                    "mudar botao para X"
-                    listaX.append()
-                    sorted(listaX, key=int)
-                elif self.clique == 1:
-                    "mudar botao para O"
-                    listaO.append()
-                    sorted(listaO, key=int)
+            if matrizX[linha][coluna] == 0:
+                if self.player == 0:
+                    self.button.configure(text=self.player[0])
+                    matrizX[linha][coluna] = 1
+                    self.player = self.player[1]
+                elif self.player == 1:
+                    self.button.configure(text=self.player[1])
+                    matrizO[linha][coluna] = 0
+                    self.player = self.player[0]
         if verifica >= 0:
             break
         
@@ -71,16 +69,16 @@ def limpa_jogadas():
     verifica_ganhador() = verifica
     
     #Reiniciar registro de jogadas
-    listaX.clear()
-    listaO.clear()
+    matrizX.clear()
+    matrizO.clear()
     
     #Reiniciar botões
     
     #Reiniciar jogador
     if verifica == 1:
-        self.clique = 0
+        self.player = self.player[0]
     elif verifica == 2:
-        self.clique = 1
+        self.player = self.player[1]
     else:
         sorteia_iniciante()
         
