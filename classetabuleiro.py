@@ -67,6 +67,7 @@ class Tabuleiro():
     def clicou(self, i, j):
         print("Turno de: {0} " .format(self.jogo.player))
         print("Botão {0} x {1} clicado" .format(i,j))
+        #if         
         self.label_turno.configure(text="Turno de: {0}" .format(self.jogo.player))
          
             

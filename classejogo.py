@@ -53,6 +53,7 @@ class Jogo():
     or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 27 or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 27:
         print("O jogador 2 (O) venceu!")
         return 2
+        
     elif  self.matriz[0][0] + self.matriz[0][1] + self.matriz[0][2] == 3 or self.matriz[1][0] + self.matriz[1][1] + self.matriz[1][2] == 3 \
     or self.matriz[2][0] + self.matriz[2][1] + self.matriz[2][2] == 3 or self.matriz[0][0] + self.matriz[1][0] + self.matriz[2][0] == 3 \
     or self.matriz[0][1] + self.matriz[1][1] + self.matriz[2][1] == 3 or self.matriz[0][2] + self.matriz[1][2] + self.matriz[2][2] == 3 \
@@ -60,6 +61,9 @@ class Jogo():
         print("O jogador 1 (X) venceu!")
         return 1
     
+    elif np.sum(self.matriz) == 49 or np.sum(self.matriz) == 41:
+        print("Deu velha!")
+        return 0
     else:         #return 2
         return -1
         
