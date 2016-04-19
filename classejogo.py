@@ -37,15 +37,7 @@ class Jogo():
         
         pass
   def verifica_ganhador(self):
-    #Verificação das possíveis vitórias
-    #Verificar quem ganha, -1 indica que o jogo está em andamento
-    
-    #Colocar sleep e depos limpa_jogadas? ##################################
-#        print("Deu Velha!")
-#        return 0
-#        print("O jogador 1 (X) venceu!")
-#        return 1
-        #print("O jogador 2 (O) venceu!")
+
     soma_colunas = np.sum(self.matriz, 0)
     soma_linhas = np.sum(self.matriz, 1)
     for i in range(3):
