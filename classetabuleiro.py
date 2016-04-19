@@ -1,12 +1,12 @@
 import tkinter as tk
-import random 
+#import classejogo
 
 
 class Tabuleiro():
 
     
     def __init__(self):
-        self.Jogo = Jogo
+        #self.jogo = classejogo.Jogo()
         self.window = tk.Tk()
         self.window.title("Jogo da Velha")
         self.window.geometry("300x350")
@@ -17,7 +17,6 @@ class Tabuleiro():
         self.window.columnconfigure(0, minsize=100, weight=1)
         self.window.columnconfigure(1, minsize=100, weight=1)
         self.window.columnconfigure(2, minsize=100, weight=1)
-        self.player = ["X","O"]
 
         
     #Criando os Botões:
