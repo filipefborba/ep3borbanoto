@@ -66,7 +66,7 @@ class Tabuleiro():
         
     def clicou(self, i, j):
         print("Botão {0} x {1} clicado" .format(i,j))
-        
+        self.label_turno.configure(text="Turno de: {0}" .format(self.jogo.player))
             
             
     def botão0x0_clicado(self):
@@ -135,6 +135,7 @@ class Tabuleiro():
         self.botão2x2.configure(state= "disabled")
         self.botão2x2.configure(font='Arial 100' )
         self.jogo.recebe_jogada(2,2)
+        
 
 jogodavelha = Tabuleiro()
 jogodavelha.window.mainloop()
