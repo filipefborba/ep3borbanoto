@@ -18,41 +18,34 @@ class Jogo():
     else:
         self.player = self.players[1]
     
-  def recebe_jogada(self,linha, coluna):
+  def recebe_jogada(self, linha, coluna):
     verifica = self.verifica_ganhador()
     matriz = np.zeros([3,3])
     
     #Registrar jogada
-    while True:
-        #if verifica == -1:
-            if matriz[linha][coluna] == 0:
-                if self.player == 0:
-                    self.clicou(linha,coluna)
-                    matriz[linha][coluna] = 1
-                    self.player = self.players[1]
-                elif self.player == 1:
-                    self.clicou(linha,coluna)
-                    matriz[linha][coluna] = 9
-                    self.player = self.players[0]
-       #elif verifica >= 0:
-            break
-        
-#"""Método para receber e registrar uma jogada.
-#Deve também alternar os jogadores. Não há retorno de valores."""
-#
-#"""  def verifica_ganhador(self):
-#    #Verificação das possíveis vitórias
-#    #Verificar quem ganha, -1 indica que o jogo está em andamento
-#    
-#    #Colocar sleep e depos limpa_jogadas? ##################################
+    if verifica == -1:
+        if matriz[linha][coluna] == 0:
+            if self.player == self.players[0]:
+                matriz[linha][coluna] = 1
+                self.player = self.players[1]
+            elif self.player == self.players[1]:
+                matriz[linha][coluna] = 9
+                self.player = self.players[0]
+    elif verifica >= 0:
+        pass
+  def verifica_ganhador(self):
+    #Verificação das possíveis vitórias
+    #Verificar quem ganha, -1 indica que o jogo está em andamento
+    
+    #Colocar sleep e depos limpa_jogadas? ##################################
 #        print("Deu Velha!")
 #        return 0
 #        print("O jogador 1 (X) venceu!")
 #        return 1
 #        print("O jogador 2 (O) venceu!")
 #        return 2
-#        return -1"""
-#        
+        return -1
+        
   def limpa_jogadas(self):
     #Reiniciar os botões, cliques, etc.
     #Podemos fazer um botão pra isso
