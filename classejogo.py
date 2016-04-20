@@ -76,18 +76,13 @@ class Jogo():
         
         self.ganhador = "Deu velha!"
         self.player = self.players[2]
-        print(2)
         return 0
     else:         #return 2
         return -1
         
   def limpa_jogadas(self):
-    #Reiniciar os botões, cliques, etc.
-    #Podemos fazer um botão pra isso
-    verifica = self.verifica_ganhador()
-    
-    #Reiniciar registro de jogadas
     self.matriz = np.zeros([3,3])
+    self.player = self.sorteia_iniciante() 
     
     #Reiniciar botões
     
