@@ -82,7 +82,7 @@ class Jogo():
         
   def limpa_jogadas(self):
     self.matriz = np.zeros([3,3])
-    self.player = self.sorteia_iniciante() 
+    self.sorteia_iniciante() 
     
     #Reiniciar botões
     

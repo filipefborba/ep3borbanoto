@@ -189,17 +189,10 @@ class Tabuleiro():
         self.botão2x2 = tk.Button(self.window)
         self.botão2x2.grid(row=2, column=2, sticky="nsew")
         self.botão2x2.configure(command=self.botão2x2_clicado)
-      
-      
-      
-    #Criando a Label dos turnos:      
-        
-        
+    
         self.label_turno = tk.Label(self.window)
         self.label_turno.grid(row=3, column=0, columnspan=1, sticky="nsew")
         self.label_turno.configure(text="Turno de : {0}" .format(self.jogo.player), bg='Black', fg='Green',font='Arial 10',)
-        
-    #Criando Botão de Reiniciar:
         
         self.reiniciar = tk.Button(self.window)
         self.reiniciar.grid(row=3, column=1,columnspan=1, sticky="nsew")
