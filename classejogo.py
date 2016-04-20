@@ -27,11 +27,16 @@ class Jogo():
         if self.matriz[linha][coluna] == 0:
             if self.player == self.players[0]:
                 self.matriz[linha][coluna] = 1
+                verifica = self.verifica_ganhador()
                 print(self.matriz)
+                print()
                 self.player = self.players[1]
+                
             elif self.player == self.players[1]:
                 self.matriz[linha][coluna] = 9
+                verifica = self.verifica_ganhador()
                 print(self.matriz)
+                print()
                 self.player = self.players[0]
     elif verifica >= 0:
         
@@ -40,20 +45,28 @@ class Jogo():
 
     soma_colunas = np.sum(self.matriz, 0)
     soma_linhas = np.sum(self.matriz, 1)
-    for i in range(3):
-        if soma_colunas[i] == 27 or soma_linhas[i] == 27 or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 27 or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 27:
-            print("O jogador 2 (O) venceu!")
-            return 2
-        
-        elif soma_colunas[i] == 3 or soma_linhas[i] == 3 or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 3 or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 3:    
-            print("O jogador 1 (X) venceu!")
-            return 1
     
-        elif np.sum(self.matriz) == 49 or np.sum(self.matriz) == 41:
-            print("Deu velha!")
-            return 0
-        else:         #return 2
-            return -1
+    if soma_colunas[0] == 27 or soma_linhas[0] == 27\
+    or soma_colunas[1] == 27 or soma_linhas[1] == 27 \
+    or soma_colunas[2] == 27 or soma_linhas[2] == 27 \
+    or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 27 \
+    or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 27:
+        print("O jogador 2 (O) venceu!")
+        return 2
+        
+    elif soma_colunas[0] == 3 or soma_linhas[0] == 3\
+    or soma_colunas[1] == 3 or soma_linhas[1] == 3 \
+    or soma_colunas[2] == 3 or soma_linhas[2] == 3 \
+    or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 3 \
+    or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 3:   
+        print("O jogador 1 (X) venceu!")
+        return 1
+    
+    elif np.sum(self.matriz) == 49 or np.sum(self.matriz) == 41:
+        print("Deu velha!")
+        return 0
+    else:         #return 2
+        return -1
         
   def limpa_jogadas(self):
     #Reiniciar os botões, cliques, etc.
