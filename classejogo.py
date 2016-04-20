@@ -3,7 +3,8 @@ import random
 
 class Jogo():
   def __init__(self):
-      self.players = ["X","O"]
+      self.players = ["X","O"," "]
+      self.ganhador = "-"
       self.player = self.players
       self.sorteia_iniciante()
       self.matriz = np.zeros([3,3])
@@ -53,10 +54,10 @@ class Jogo():
     or soma_colunas[2] == 27 or soma_linhas[2] == 27 \
     or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 27 \
     or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 27:
-        print()        
-        self.player="O jogador O venceu!"
-        print()
-        self.vitórias_o += 1
+      
+        self.ganhador=" O "
+        self.player = self.players[2]
+
 #        print(self.vitórias_o)
         return 2
         
@@ -64,17 +65,17 @@ class Jogo():
     or soma_colunas[1] == 3 or soma_linhas[1] == 3 \
     or soma_colunas[2] == 3 or soma_linhas[2] == 3 \
     or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 3 \
-    or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 3:   
-        print()        
-        self.player = "O jogador X venceu!"
-        print()
-        self.vitórias_x += 1
+    or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 3:          
+        self.ganhador = " X "
+        self.player = self.players[2]
 #        print(self.vitórias_x)
         return 1
     
     elif np.sum(self.matriz) == 49 or np.sum(self.matriz) == 41:
         print()
-        print("Deu velha!")
+        
+        self.ganhador = "Deu velha!"
+        self.player = self.players[2]
         print(2)
         return 0
     else:         #return 2
