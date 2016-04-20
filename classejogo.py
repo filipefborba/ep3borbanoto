@@ -7,6 +7,8 @@ class Jogo():
       self.player = self.players
       self.sorteia_iniciante()
       self.matriz = np.zeros([3,3])
+      self.vitórias_x = 0
+      self.vitórias_o = 0
       
   def iniciar(self):
     self.window.mainloop()
@@ -22,22 +24,22 @@ class Jogo():
   def recebe_jogada(self, linha, coluna):
     verifica = self.verifica_ganhador()
     
-    #Registrar jogada
+    #Registrar 
     if verifica == -1:
         if self.matriz[linha][coluna] == 0:
-            if self.player == self.players[0]:
+            if self.player == self.players[0]: 
                 self.matriz[linha][coluna] = 1
-                verifica = self.verifica_ganhador()
                 print(self.matriz)
                 print()
                 self.player = self.players[1]
+                verifica = self.verifica_ganhador()
                 
             elif self.player == self.players[1]:
                 self.matriz[linha][coluna] = 9
-                verifica = self.verifica_ganhador()
                 print(self.matriz)
                 print()
                 self.player = self.players[0]
+                verifica = self.verifica_ganhador()
     elif verifica >= 0:
         
         pass
@@ -51,7 +53,11 @@ class Jogo():
     or soma_colunas[2] == 27 or soma_linhas[2] == 27 \
     or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 27 \
     or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 27:
-        print("O jogador 2 (O) venceu!")
+        print()        
+        self.player="O jogador O venceu!"
+        print()
+        self.vitórias_o += 1
+#        print(self.vitórias_o)
         return 2
         
     elif soma_colunas[0] == 3 or soma_linhas[0] == 3\
@@ -59,11 +65,17 @@ class Jogo():
     or soma_colunas[2] == 3 or soma_linhas[2] == 3 \
     or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 3 \
     or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 3:   
-        print("O jogador 1 (X) venceu!")
+        print()        
+        self.player = "O jogador X venceu!"
+        print()
+        self.vitórias_x += 1
+#        print(self.vitórias_x)
         return 1
     
     elif np.sum(self.matriz) == 49 or np.sum(self.matriz) == 41:
+        print()
         print("Deu velha!")
+        print(2)
         return 0
     else:         #return 2
         return -1
@@ -79,12 +91,12 @@ class Jogo():
     #Reiniciar botões
     
     #Reiniciar jogador
-    if verifica == 1:
-        self.player = self.players[0]
-    elif verifica == 2:
-        self.player = self.players[1]
-    else:
-        self.sorteia_iniciante()
+#    if verifica == 1:
+       
+#   elif verifica == 2:
+    
+#  else:
+#     self.sorteia_iniciante()
         
     
 """Método para limpar as jogadas, ou seja, reinicia o jogo (não
