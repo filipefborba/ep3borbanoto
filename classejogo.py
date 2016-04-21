@@ -57,18 +57,20 @@ class Jogo():
       
         self.ganhador=" O "
         self.player = self.players[2]
-
-#        print(self.vitórias_o)
+        self.vitórias_o +=1
+        print(self.vitórias_o)
         return 2
         
     elif soma_colunas[0] == 3 or soma_linhas[0] == 3\
     or soma_colunas[1] == 3 or soma_linhas[1] == 3 \
     or soma_colunas[2] == 3 or soma_linhas[2] == 3 \
     or self.matriz[0][0] + self.matriz[1][1] + self.matriz[2][2] == 3 \
-    or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 3:          
+    or self.matriz[2][0] + self.matriz[1][1] + self.matriz[0][2] == 3:  
+        
         self.ganhador = " X "
         self.player = self.players[2]
-#        print(self.vitórias_x)
+        self.vitórias_x += 1
+        print(self.vitórias_x)
         return 1
     
     elif np.sum(self.matriz) == 49 or np.sum(self.matriz) == 41:
@@ -82,7 +84,7 @@ class Jogo():
         
   def limpa_jogadas(self):
     self.matriz = np.zeros([3,3])
-    self.sorteia_iniciante() 
+    self.sorteia_iniciante()
     
     #Reiniciar botões
     
