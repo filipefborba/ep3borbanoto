@@ -41,8 +41,11 @@ class Jogo():
                 print()
                 self.player = self.players[0]
                 verifica = self.verifica_ganhador()
-    elif verifica >= 0:
-        
+    elif verifica == 2:
+        self.vitórias_o -=1
+    elif verifica == 1:
+        self.vitórias_x -=1
+    else:
         pass
   def verifica_ganhador(self):
 
