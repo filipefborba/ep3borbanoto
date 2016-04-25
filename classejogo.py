@@ -15,8 +15,8 @@ class Jogo():
     self.window.mainloop()
     
   def sorteia_iniciante(self):
+  #Se "a" for 0 o jogador X inicia, caso for 1, o jogador O inicia.
     a = random.randint(0,1)
-    #Se o clique for 0 o jogador X inicia, caso for 1, o jogador O inicia.
     if a == 0:
         self.player = self.players[0]
     else:
@@ -24,8 +24,7 @@ class Jogo():
     
   def recebe_jogada(self, linha, coluna):
     verifica = self.verifica_ganhador()
-    
-    #Registrar 
+    #Enquanto não há ganhador (verifica = -1), as jogadas são registradas.
     if verifica == -1:
         if self.matriz[linha][coluna] == 0:
             if self.player == self.players[0]: 
@@ -47,8 +46,11 @@ class Jogo():
         self.vitórias_x -=1
     else:
         pass
+    
   def verifica_ganhador(self):
-
+    #O computador somará as linhas, colunas e diagonais da matriz registrada
+    #pelos botões. X tem o valor de 1 e O tem o valor de 9.
+    #Caso alguém ganhe, será adicionado um ponto no seu placar após reiniciar.
     soma_colunas = np.sum(self.matriz, 0)
     soma_linhas = np.sum(self.matriz, 1)
     
@@ -78,29 +80,13 @@ class Jogo():
     
     elif np.sum(self.matriz) == 49 or np.sum(self.matriz) == 41:
         print()
-        
         self.ganhador = "Deu velha!"
         self.player = self.players[2]
         return 0
-    else:         #return 2
+    else:
         return -1
         
   def limpa_jogadas(self):
     self.matriz = np.zeros([3,3])
     self.sorteia_iniciante()
     self.ganhador = "-"
-    
-    #Reiniciar botões
-    
-    #Reiniciar jogador
-#    if verifica == 1:
-       
-#   elif verifica == 2:
-    
-#  else:
-#     self.sorteia_iniciante()
-        
-    
-"""Método para limpar as jogadas, ou seja, reinicia o jogo (não
-limpará a tela – lembre-se que a classe Jogo não tem acesso à classe
-Tabuleiro), mantendo a vez do jogador."""
